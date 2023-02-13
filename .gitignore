@@ -18,8 +18,11 @@
 .env.test.local
 .env.production.local
 
-#IDE
+# IDE
 .idea
+
+# local env files
+.env*
 
 npm-debug.log*
 yarn-debug.log*

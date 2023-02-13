@@ -6,14 +6,19 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^13.0.0",
     "@testing-library/user-event": "^13.2.1",
+    "@types/axios": "^0.14.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
+    "axios": "^1.3.2",
+    "mobx": "^6.8.0",
+    "mobx-react-lite": "^3.4.0",
     "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "ts-md5": "^1.3.1",
     "typescript": "^4.4.2",
     "web-vitals": "^2.1.0"
   },
@@ -57,10 +62,10 @@
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
     "stylelint": "^15.1.0",
     "stylelint-config-recess-order": "^3.1.0",
     "stylelint-config-standard": "^30.0.1",
-    "stylelint-order": "^6.0.2",
-    "husky": "^8.0.0"
+    "stylelint-order": "^6.0.2"
   }
 }

@@ -1,0 +1,17 @@
+.inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input {
+  width: 80%;
+  padding: 10px;
+  border-radius: 16px;
+  border: 1px var(--main-black-color) solid;
+}
+
+.resetBtn {
+  padding: 5px;
+  border: 1px var(--main-black-color) solid;
+}
