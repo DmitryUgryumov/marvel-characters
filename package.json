@@ -29,7 +29,8 @@
     "check:all": "yarn run check:tsc && yarn run check:stylelint && yarn run check:prettier && yarn run check:eslint",
     "fix:prettier": "prettier --write src/",
     "fix:stylelint": "stylelint src/**/*.css --fix",
-    "fix:all": "yarn run fix:prettier && yarn run fix:stylelint"
+    "fix:all": "yarn run fix:prettier && yarn run fix:stylelint",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -59,6 +60,7 @@
     "stylelint": "^15.1.0",
     "stylelint-config-recess-order": "^3.1.0",
     "stylelint-config-standard": "^30.0.1",
-    "stylelint-order": "^6.0.2"
+    "stylelint-order": "^6.0.2",
+    "husky": "^8.0.0"
   }
 }
