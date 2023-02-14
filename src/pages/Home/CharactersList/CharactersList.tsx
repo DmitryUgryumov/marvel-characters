@@ -1,5 +1,4 @@
 // Core
-import { FC } from 'react';
 import { observer } from 'mobx-react-lite';
 
 // Stores
@@ -7,11 +6,15 @@ import charactersStore from '../../../stores/Characters.store';
 
 // Components
 import CharactersItem from './CharactersItem/CharactersItem';
+import CharactersEnd from './CharactersEnd/CharactersEnd';
 
-const CharactersList: FC = () => {
-  const { characters, isLoading, isError } = charactersStore;
+// Styles
+import styles from './CharactersList.module.css';
 
-  if (isLoading) {
+const CharactersList = () => {
+  const { characters, isMainLoading, isError } = charactersStore;
+
+  if (isMainLoading) {
     return <p>Loading...</p>;
   }
 
@@ -24,13 +27,14 @@ const CharactersList: FC = () => {
   }
 
   return (
-    <div>
-      <ul>
+    <>
+      <ul className={styles.characters}>
         {characters.map((character) => (
           <CharactersItem character={character} key={character.id} />
         ))}
       </ul>
-    </div>
+      <CharactersEnd />
+    </>
   );
 };
 

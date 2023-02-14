@@ -1,20 +1,27 @@
 import apiServer from './apiServer.api';
-import Character from '../interfaces/character.interface';
+import { CharactersResponse } from '../interfaces/charactersResponse.interface';
 
-interface CharactersResponse {
-  data: {
-    results: Character[];
-  };
+interface CharactersParams {
+  limit: number;
+  offset: number;
+  nameStartsWith?: string;
 }
 
-const getCharacters = async (nameFilter: string): Promise<Character[]> => {
-  const params = nameFilter ? { nameStartsWith: nameFilter } : {};
+const getCharacters = async (nameStartsWith: string, limit: number, offset: number): Promise<CharactersResponse> => {
+  const params: CharactersParams = {
+    limit,
+    offset,
+  };
+
+  if (nameStartsWith) {
+    params.nameStartsWith = nameStartsWith;
+  }
 
   const { data } = await apiServer.get<CharactersResponse>('/characters', {
     params,
   });
 
-  return data.data.results;
+  return data;
 };
 
 export default getCharacters;

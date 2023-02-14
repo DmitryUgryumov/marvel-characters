@@ -4,23 +4,25 @@ import { FC } from 'react';
 // Interfaces
 import Character from '../../../../interfaces/character.interface';
 
+// Styles
+import styles from './CharacterItem.module.css';
+
 interface PropsTypes {
   character: Character;
 }
 
 const CharactersItem: FC<PropsTypes> = ({ character }) => {
   return (
-    <li>
-      <p>{character.name}</p>
-      {character.description && <p>{character.description}</p>}
+    <li className={styles.character}>
       {character.thumbnail.path && character.thumbnail.extension && (
         <img
           src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
-          width={100}
-          height={100}
+          className={styles.image}
         />
       )}
+      <p className={styles.name}>{character.name}</p>
+      {character.description && <p className={styles.description}>{character.description}</p>}
     </li>
   );
 };

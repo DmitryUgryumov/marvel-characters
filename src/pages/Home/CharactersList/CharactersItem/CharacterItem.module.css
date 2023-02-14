@@ -1,0 +1,31 @@
+.character {
+  border: 1px var(--main-black-color) solid;
+  border-radius: 16px;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+
+.image {
+  max-width: 100%;
+  margin: 0 auto;
+  height: auto;
+  display: block;
+}
+
+.name {
+  margin-top: 15px;
+}
+
+.description {
+  text-overflow: ellipsis;
+  overflow-y: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  margin-top: 10px;
+}
+
+.name,
+.description {
+  padding: 0 10px;
+}
