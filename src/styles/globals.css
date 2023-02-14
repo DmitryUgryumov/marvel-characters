@@ -1,12 +1,16 @@
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 body {
-  overflow-x: hidden;
   color: var(--main-black-color);
   background-color: var(--main-bg-color);
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 * {

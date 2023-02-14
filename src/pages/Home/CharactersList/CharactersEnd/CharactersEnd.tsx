@@ -6,6 +6,7 @@ import charactersStore from '../../../../stores/Characters.store';
 
 // Components
 import ListEndDetected from '../../../../components/ListEndDetected/ListEndDetected';
+import Loader from '../../../../components/Loader/Loader';
 
 // Styles
 import styles from './CharactersEnd.module.css';
@@ -15,7 +16,7 @@ const CharactersEnd = () => {
 
   return (
     <div className={styles.endContainer}>
-      {isSecondaryLoading ? <div>Loading</div> : <ListEndDetected onListEnd={changeOffsetFilter} />}
+      {isSecondaryLoading ? <Loader /> : <ListEndDetected onListEnd={changeOffsetFilter} />}
     </div>
   );
 };

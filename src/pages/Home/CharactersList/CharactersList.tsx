@@ -7,6 +7,7 @@ import charactersStore from '../../../stores/Characters.store';
 // Components
 import CharactersItem from './CharactersItem/CharactersItem';
 import CharactersEnd from './CharactersEnd/CharactersEnd';
+import Loader from '../../../components/Loader/Loader';
 
 // Styles
 import styles from './CharactersList.module.css';
@@ -15,7 +16,7 @@ const CharactersList = () => {
   const { characters, isMainLoading, isError } = charactersStore;
 
   if (isMainLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   if (isError) {

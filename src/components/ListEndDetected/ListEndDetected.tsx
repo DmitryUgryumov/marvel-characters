@@ -6,8 +6,8 @@ interface PropsTypes {
 }
 
 const ListEndDetected: FC<PropsTypes> = ({ onListEnd }) => {
-  const endRef = useRef<HTMLDivElement | null>(null);
   const [endIsDetected, setEndIsDetected] = useState<boolean>(false);
+  const endRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!endRef.current || endIsDetected) {
@@ -26,7 +26,7 @@ const ListEndDetected: FC<PropsTypes> = ({ onListEnd }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [endIsDetected]);
 
-  return <div ref={endRef} className="test" />;
+  return <div ref={endRef} />;
 };
 
 export default ListEndDetected;
