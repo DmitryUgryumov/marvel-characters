@@ -4,13 +4,20 @@ import { CharactersResponse } from '../interfaces/charactersResponse.interface';
 interface CharactersParams {
   limit: number;
   offset: number;
+  orderBy: string;
   nameStartsWith?: string;
 }
 
-const getCharacters = async (nameStartsWith: string, limit: number, offset: number): Promise<CharactersResponse> => {
+const getCharacters = async (
+  nameStartsWith: string,
+  limit: number,
+  offset: number,
+  orderBy: string
+): Promise<CharactersResponse> => {
   const params: CharactersParams = {
     limit,
     offset,
+    orderBy,
   };
 
   if (nameStartsWith) {

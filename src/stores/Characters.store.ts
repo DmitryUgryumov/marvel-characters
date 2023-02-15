@@ -4,6 +4,9 @@ import { makeAutoObservable, runInAction } from 'mobx';
 // Interfaces
 import Character from '../interfaces/character.interface';
 
+// Enums
+import Order from '../enums/order.enum';
+
 // API
 import getCharacters from '../api/getCharacters.api';
 
@@ -18,6 +21,8 @@ class Characters {
 
   offsetFilter: number;
 
+  orderBySorting: Order;
+
   isMainLoading: boolean;
 
   isSecondaryLoading: boolean;
@@ -31,20 +36,25 @@ class Characters {
     this.limitFilter = 20;
     this.offsetFilter = 0;
     this.isMainLoading = false;
+    this.orderBySorting = Order.Name;
     this.isSecondaryLoading = false;
     this.isError = false;
     makeAutoObservable(this);
   }
 
+  showLoader = (isRefreshCharacters: boolean, isShow: boolean) => {
+    if (isRefreshCharacters) {
+      this.isMainLoading = isShow;
+    } else {
+      this.isSecondaryLoading = isShow;
+    }
+  };
+
   getCharacters = async (isRefreshCharacters = true) => {
     try {
-      if (isRefreshCharacters) {
-        this.isMainLoading = true;
-      } else {
-        this.isSecondaryLoading = true;
-      }
+      this.showLoader(isRefreshCharacters, true);
+      const characters = await getCharacters(this.nameFilter, this.limitFilter, this.offsetFilter, this.orderBySorting);
 
-      const characters = await getCharacters(this.nameFilter, this.limitFilter, this.offsetFilter);
       runInAction(() => {
         if (isRefreshCharacters) {
           this.characters = characters.data.results;
@@ -57,13 +67,7 @@ class Characters {
     } catch (error) {
       runInAction(() => (this.isError = true));
     } finally {
-      runInAction(() => {
-        if (isRefreshCharacters) {
-          this.isMainLoading = false;
-        } else {
-          this.isSecondaryLoading = false;
-        }
-      });
+      this.showLoader(isRefreshCharacters, false);
     }
   };
 
@@ -78,6 +82,12 @@ class Characters {
       this.offsetFilter += this.limitFilter;
       this.getCharacters(false);
     }
+  };
+
+  changeOrderSorting = (order: Order) => {
+    this.orderBySorting = order;
+    this.offsetFilter = 0;
+    this.getCharacters();
   };
 }
 

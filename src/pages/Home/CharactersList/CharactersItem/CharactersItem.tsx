@@ -1,5 +1,5 @@
 // Core
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 // Interfaces
 import Character from '../../../../interfaces/character.interface';
@@ -27,4 +27,4 @@ const CharactersItem: FC<PropsTypes> = ({ character }) => {
   );
 };
 
-export default CharactersItem;
+export default memo(CharactersItem);
